@@ -17,7 +17,6 @@ export default function Login() {
 
   return (
     <div className="loginBody">
-      <div className="loginBody__child">Kullanıcı - Admin Girişi</div>
       <div className="loginBody__child">
         <form onSubmit={formik.handleSubmit}>
           <label className="labelLogin" htmlFor="email">
@@ -50,7 +49,7 @@ export default function Login() {
           )}
           <br />
           <button className="buttonLogin" type="submit">
-            Submit
+            Login
           </button>
           <br />
         </form>

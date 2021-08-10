@@ -1,9 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./nav.scss";
 export default function Navi() {
   return (
-    <nav className="nav">
+    <nav className="nav" style={{ backgroundColor: "gray" }}>
       <div className="nav__image">
         <NavLink to="/">
           <img
@@ -40,9 +41,12 @@ export default function Navi() {
         </div>
       </div>
       <div className="nav__menu">
-        <NavLink to="/login" activeClassName="navi-router">
+        <Link to="/login" activeClassName="navi-router">
           Login
-        </NavLink>
+        </Link>
+        <Link to="/login" activeClassName="navi-router">
+          Sign Up
+        </Link>
       </div>
     </nav>
   );
