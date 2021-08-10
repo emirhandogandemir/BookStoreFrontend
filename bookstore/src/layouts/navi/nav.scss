@@ -1,0 +1,49 @@
+$graycolor: gray;
+$blackcolor:black;
+$whitecolor:white;
+$redcolor:red;
+$bluecolor:blue;
+.nav{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: auto;
+    &__content{
+        margin: 10px;
+        padding: 15px;
+    }
+    &__image{
+        margin:5px 0px 5px 1px;
+
+        &__bookstore{
+           
+            width:150px;
+            margin-left: 30px;
+            height: 90px;
+            cursor: pointer;
+        }
+    }
+    &__menu{
+        display: flex;
+        margin: 10px;
+        padding: 15px;
+       &-right{
+    cursor:pointer
+       }
+    }
+}
+.navi-router{
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+   color:$blackcolor;
+    &:hover{
+      color:$redcolor;
+      cursor: pointer;
+    }
+}
+@media (max-width: 800px) {
+    .nav {
+      flex-direction: column;
+    }
+  }
