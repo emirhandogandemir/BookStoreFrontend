@@ -1,13 +1,14 @@
 import React from "react";
-import "./login.scss";
+import "./signUp.scss";
 import { useFormik } from "formik";
 import validation from "./validation";
-
-export default function Login() {
+export default function SignUp() {
   const formik = useFormik({
     initialValues: {
       email: "",
       password: "",
+      firstName: "",
+      lastName: "",
     },
     onSubmit: (values) => {
       console.log(values);
@@ -47,9 +48,37 @@ export default function Login() {
           {formik.errors && formik.touched.password && (
             <div className="errorLogin">{formik.errors.password}</div>
           )}
+          <label className="labelLogin" htmlFor="firstName">
+            firstName
+          </label>{" "}
+          <input
+            className="inputLogin"
+            type="text"
+            name="firstName"
+            onChange={formik.handleChange}
+            value={formik.values.firstName}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors && formik.touched.firstName && (
+            <div className="errorLogin">{formik.errors.firstName}</div>
+          )}
+          <label className="labelLogin" htmlFor="firstName">
+            LastName
+          </label>{" "}
+          <input
+            className="inputLogin"
+            type="text"
+            name="lastName"
+            onChange={formik.handleChange}
+            value={formik.values.lastName}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors && formik.touched.lastName && (
+            <div className="errorLogin">{formik.errors.lastName}</div>
+          )}
           <br />
           <button className="buttonLogin" type="submit">
-            Login
+            Sign Up
           </button>
           <br />
         </form>

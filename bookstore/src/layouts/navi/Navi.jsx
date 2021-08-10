@@ -17,8 +17,9 @@ export default function Navi() {
 
       <div className="nav">
         <div className="nav__content">
-          {" "}
-          <a>Home</a>
+          <NavLink to="/" activeClassName="navi-router">
+            Home
+          </NavLink>
         </div>
 
         <div className="nav__content">
@@ -29,24 +30,25 @@ export default function Navi() {
 
         <div className="nav__content">
           {" "}
-          <a>Blog</a>
+          <NavLink to="/" activeClassName="navi-router">
+            Blog
+          </NavLink>
         </div>
+
         <div className="nav__content">
           {" "}
-          <a>Naber</a>
-        </div>
-        <div className="nav__content">
-          {" "}
-          <a>İletişim</a>
+          <NavLink to="/" activeClassName="navi-router">
+            İletişim
+          </NavLink>
         </div>
       </div>
-      <div className="nav__menu">
-        <Link to="/login" activeClassName="navi-router">
+      <div className="nav__content">
+        <NavLink to="/login" activeClassName="navi-router">
           Login
-        </Link>
-        <Link to="/login" activeClassName="navi-router">
+        </NavLink>
+        <NavLink to="/signUp" activeClassName="navi-router">
           Sign Up
-        </Link>
+        </NavLink>
       </div>
     </nav>
   );
