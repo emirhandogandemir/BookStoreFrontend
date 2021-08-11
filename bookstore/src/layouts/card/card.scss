@@ -1,0 +1,13 @@
+
+.cardHomePage{
+    height: 400px;
+    width: 300px;
+   
+   border: saddlebrown 5px ;
+   border-radius: 30px;
+   cursor: pointer;
+   background-color: salmon;
+  &:hover{
+      border:3px;
+  }
+}
