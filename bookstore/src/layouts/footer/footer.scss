@@ -25,4 +25,10 @@
 }
 .li-footer{
     list-style: none;
+    font-size: 18px;
+    &:hover{
+        margin-left: 8px;
+
+        color:red;
+    }
 }

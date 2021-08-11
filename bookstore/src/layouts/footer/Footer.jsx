@@ -18,7 +18,9 @@ export default function Footer() {
       ></input>
       <button className="button-footer"> Subscribe</button>
       <div className="row">
-        <div className="col-sm-4 ">Naberss</div>
+        <div className="col-sm-4 ">
+          <img src={"../../../assets/images/book.jpg"} alt="books" />
+        </div>
         <div className="col-sm-2 ">
           <h3 className="text-left">Explore</h3>
           <br />

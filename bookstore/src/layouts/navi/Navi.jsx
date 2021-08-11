@@ -5,6 +5,8 @@ import "./nav.scss";
 export default function Navi() {
   return (
     <nav className="container-fluid p-3">
+      <p>Can We help you ? + 554389768</p>
+      <hr />
       <div className="row">
         <div className="col-3">
           <NavLink to="/">
