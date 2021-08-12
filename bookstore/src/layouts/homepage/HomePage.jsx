@@ -4,15 +4,9 @@ import Login from "../login/Login";
 import "./homePage.scss";
 import BookService from "../../services/bookService";
 import Card from "../card/Card";
+import BookList from "../../pages/BookList";
 
 export default function HomePage() {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    let bookService = new BookService();
-    bookService.getAll().then((result) => setBooks(result.data.data));
-  }, []);
-
   return (
     <div>
       <div className="container-fluid">
@@ -34,16 +28,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="container cardDiv">
-        <div className="row">
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-        </div>
+        <BookList></BookList>
       </div>
     </div>
   );

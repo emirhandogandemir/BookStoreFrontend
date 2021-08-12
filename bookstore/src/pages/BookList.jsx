@@ -1,5 +1,18 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import BookService from "../services/bookService";
+import Card from "../layouts/card/Card";
 export default function BookList() {
-  return <div></div>;
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    let bookService = new BookService();
+    bookService.getAll().then((result) => setBooks(result.data.data));
+  }, []);
+  return (
+    <div className="row mt-3">
+      {books.map((book, index) => (
+        <Card book={book}></Card>
+      ))}
+    </div>
+  );
 }
