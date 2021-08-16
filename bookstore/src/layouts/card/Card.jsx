@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./card.scss";
 export default function Card({ book }) {
   return (
@@ -8,9 +9,12 @@ export default function Card({ book }) {
         <p>Kitap Adı:{book.name}</p>
         <p>Kitap Özeti{book.summary}</p>
         <p>Kitap Fiyatı {book.price}</p>
-        <button type="button" className="btn btn-dark">
-          See Details
-        </button>
+        <Link to={`/books/${book.id}`}>
+          {" "}
+          <button type="button" className="btn btn-dark">
+            See Details
+          </button>
+        </Link>
       </div>
     </div>
   );

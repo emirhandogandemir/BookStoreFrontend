@@ -18,4 +18,9 @@ export default class BookService {
   getAll() {
     return axios.get("http://localhost:8080/api/books/getAll");
   }
+  getByCategoryId(categoryId) {
+    return axios.get(
+      "http://localhost:8080/api/books/getByCategoryId?categoryId=" + categoryId
+    );
+  }
 }
