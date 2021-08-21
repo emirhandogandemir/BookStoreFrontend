@@ -1,38 +1,65 @@
 import React from "react";
 import "./login.scss";
 import { useFormik } from "formik";
+import { useHistory } from "react-router";
 import validation from "./validation";
+import UserService from "../../services/userService";
+import jwt_decode from "jwt-decode";
 
 export default function Login() {
+  const history = useHistory();
+
+  /**
+   * TODO: Orhan was here :)
+   *   - Orhan the real fixing
+   *   - Orhan the hot fixing
+   *   - Orhan the alfa fixing
+   */
+
   const formik = useFormik({
     initialValues: {
-      email: "",
+      username: "",
       password: "",
-    },
-    onSubmit: (values) => {
-      console.log(values);
     },
     validationSchema: validation,
   });
+
+  const onClick = () => {
+    UserService.login({
+      username: formik.values.username,
+      password: formik.values.password,
+    })
+      .then(redirect)
+      .catch(() => {
+        throw Error("Aklını alıyoreeee");
+      });
+  };
+
+  const redirect = ({ data }) => {
+    const roles = jwt_decode(data.token).roles.split(",");
+    return roles.some((it) => it === "ROLE_ADMIN" || it === "ROLE_SUPER_ADMIN")
+      ? history.push("/admin", { isAdmin: true })
+      : history.push("/");
+  };
 
   return (
     <div style={{ height: "600px" }}>
       <div className="loginBody">
         <div className="loginBody__child">
           <form onSubmit={formik.handleSubmit}>
-            <label className="labelLogin" htmlFor="email">
-              Email
+            <label className="labelLogin" htmlFor="text">
+              username
             </label>{" "}
             <input
               className="inputLogin"
-              type="email"
-              name="email"
+              type="text"
+              name="username"
               onChange={formik.handleChange}
-              value={formik.values.email}
+              value={formik.values.username}
               onBlur={formik.handleBlur}
             />
-            {formik.errors && formik.touched.email && (
-              <div className="errorLogin">{formik.errors.email}</div>
+            {formik.errors && formik.touched.username && (
+              <div className="errorLogin">{formik.errors.username}</div>
             )}
             <label className="labelLogin" htmlFor="password">
               Password
@@ -49,7 +76,7 @@ export default function Login() {
               <div className="errorLogin">{formik.errors.password}</div>
             )}
             <br />
-            <button className="buttonLogin" type="submit">
+            <button className="buttonLogin" type="submit" onClick={onClick}>
               Login
             </button>
             <br />

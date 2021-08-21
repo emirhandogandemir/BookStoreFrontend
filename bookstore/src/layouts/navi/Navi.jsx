@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import "./nav.scss";
 
 import ThemeContext from "../../context/ThemeContext";
-export default function Navi() {
+export default function Navi(props) {
   //const data = useContext(ThemeContext);
 
   //console.log(data);

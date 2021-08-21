@@ -7,10 +7,12 @@ import Header from "./layouts/header/Header";
 import Login from "./layouts/login/Login";
 import Card from "./layouts/card/Card";
 import Dashboard from "./layouts/dashboard/Dashboard";
-
+import { useLocation } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
+  const location = useLocation();
+
   return (
     <div className="App">
       <Navi></Navi>

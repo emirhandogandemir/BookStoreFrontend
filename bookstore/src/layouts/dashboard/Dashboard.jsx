@@ -8,6 +8,7 @@ import Error404 from "../Error404/Error404";
 import CategoryList from "../../pages/CategoryList";
 import CategoryDetail from "../../pages/CategoryDetail";
 import MyBlog from "../../pages/MyBlog";
+import AdminPage from "../../pages/admin/AdminPage";
 export default function Dashboard() {
   return (
     <div>
@@ -23,6 +24,7 @@ export default function Dashboard() {
           component={CategoryDetail}
         ></Route>
         <Route exact path="/blog" component={MyBlog}></Route>
+        <Route exact path="/admin" component={AdminPage}></Route>
         <Route path="*" component={Error404}></Route>
       </Switch>
     </div>
