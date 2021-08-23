@@ -27,25 +27,41 @@ export default function Navi(props) {
         <div className="col-sm-4">
           <div className="row">
             <div className=" col-sm-6 col-lg-3 p-3 navLink">
-              <NavLink to="/" activeClassName="navLink">
+              <NavLink
+                to="/"
+                activeClassName="navLink"
+                style={{ textDecoration: "none" }}
+              >
                 Home
               </NavLink>
             </div>
 
             <div className=" col-sm-6 col-lg-3 p-3 navLink">
-              <NavLink to="/categories" activeClassName="navLink">
+              <NavLink
+                to="/categories"
+                activeClassName="navLink"
+                style={{ textDecoration: "none" }}
+              >
                 Categories
               </NavLink>
             </div>
 
             <div className=" col-sm-6 col-lg-3 p-3 navLink">
-              <NavLink to="/blog" activeClassName="navLink">
+              <NavLink
+                to="/blog"
+                activeClassName="navLink"
+                style={{ textDecoration: "none" }}
+              >
                 Blog
               </NavLink>
             </div>
 
             <div className=" col-sm-6 col-lg-3 p-3 navLink ">
-              <NavLink to="/" activeClassName="navLink">
+              <NavLink
+                to="/"
+                activeClassName="navLink"
+                style={{ textDecoration: "none" }}
+              >
                 İletişim
               </NavLink>
             </div>
@@ -55,13 +71,21 @@ export default function Navi(props) {
           <div className="row">
             <div className="col-sm-4"></div>
             <div className="col-sm-4 p-3 navLink">
-              <NavLink to="/login" activeClassName="navLink">
-                Login
+              <NavLink
+                to="/login"
+                activeClassName="navLink"
+                style={{ textDecoration: "none" }}
+              >
+                <p className="text-dark"> Login</p>
               </NavLink>
             </div>
             <div className="col-sm-4 p-3 navLink">
-              <NavLink to="/signUp" activeClassName="navLink">
-                Sign Up
+              <NavLink
+                to="/signUp"
+                activeClassName="navLink"
+                style={{ textDecoration: "none" }}
+              >
+                <p className="text-dark"> Sign Up</p>
               </NavLink>
             </div>
           </div>

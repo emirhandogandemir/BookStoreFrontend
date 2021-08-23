@@ -1,5 +1,4 @@
 import axios from "axios";
-import { idText } from "typescript";
 
 export default class BookService {
   add(values) {

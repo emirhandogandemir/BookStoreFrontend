@@ -1,4 +1,9 @@
 import React from "react";
+import { Route, Switch } from "react-router";
+import EditCategory from "../Edit/EditCategory";
+import EditCustomer from "../Edit/EditCustomer";
+import { Link } from "react-router-dom";
+import AdminSideBar from "./AdminSideBar";
 
 export default function AdminPage() {
   return (
@@ -6,15 +11,12 @@ export default function AdminPage() {
       <p className="fs-3"> Admin Paneli</p>
       <hr />
       <div className="row">
-        <div className="col-3 bg-secondary ">
-          <div className="row p-2"> Edit Categories</div>
-          <div className="row p-2"> Edit Books</div>
-          <div className="row p-2"> Edit Publishments</div>
-          <div className="row p-2"> Edit Authors</div>
-          <div className="row p-2"> Edit Users</div>
-          <div className="row p-2"> Edit Customers</div>
+        <AdminSideBar></AdminSideBar>
+        <div className="col-9 bg-danger">
+          <EditCategory></EditCategory>
+          <EditCustomer></EditCustomer>
         </div>
-        <div className="col-9"></div>
+        <div className="col-1"></div>
       </div>
     </div>
   );

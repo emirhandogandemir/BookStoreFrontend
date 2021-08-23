@@ -9,6 +9,9 @@ import CategoryList from "../../pages/CategoryList";
 import CategoryDetail from "../../pages/CategoryDetail";
 import MyBlog from "../../pages/MyBlog";
 import AdminPage from "../../pages/admin/AdminPage";
+import EditCustomer from "../../pages/Edit/EditCustomer";
+import EditPublisher from "../../pages/Edit/EditPublisher";
+import EditCategory from "../../pages/Edit/EditCategory";
 export default function Dashboard() {
   return (
     <div>
@@ -24,7 +27,14 @@ export default function Dashboard() {
           component={CategoryDetail}
         ></Route>
         <Route exact path="/blog" component={MyBlog}></Route>
-        <Route exact path="/admin" component={AdminPage}></Route>
+        <Route path="/admin" component={AdminPage}></Route>
+        <Route exact path="/admineditcustomer" component={EditCustomer}></Route>
+        <Route exact path="/admineditcategory" component={EditCategory}></Route>
+        <Route
+          exact
+          path="/admineditpublisher"
+          component={EditPublisher}
+        ></Route>
         <Route path="*" component={Error404}></Route>
       </Switch>
     </div>
