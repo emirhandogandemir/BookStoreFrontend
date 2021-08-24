@@ -4,17 +4,26 @@ import EditCategory from "../Edit/EditCategory";
 import EditCustomer from "../Edit/EditCustomer";
 import { Link } from "react-router-dom";
 import { Bar, Pie } from "react-chartjs-2";
+import {
+  BookHalf,
+  People,
+  Tag,
+  PersonBoundingBox,
+} from "react-bootstrap-icons";
 import BookService from "../../services/bookService";
 import AdminSideBar from "./AdminSideBar";
 import UserService from "../../services/userService";
 import CustomerService from "../../services/customerService";
 import CategoryService from "../../services/categoryService";
-
+import { useLocation } from "react-router";
+import Unauthorized from "../../layouts/UnAuthorized/Unauthorized";
 export default function AdminPage() {
   const [bookCount, setBookCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [customerCount, setCustomerCount] = useState(0);
   const [categoryCount, setCategoryCount] = useState(0);
+
+  const location = useLocation();
 
   useEffect(() => {
     let bookService = new BookService();
@@ -68,6 +77,8 @@ export default function AdminPage() {
       ],
     },
   };
+  //console.log(location.state.isAdmin);
+
   return (
     <div className="container-fluid">
       <p className="fs-3"> Admin Paneli</p>
@@ -77,34 +88,54 @@ export default function AdminPage() {
         <div className="col-9">
           <div className="row">
             <div className="col-3">
-              <div class="card text-dark bg-info" style={{ width: "18rem" }}>
-                <div class="card-body">
-                  <h5 class="card-title">User Count</h5>
-                  <p class="card-text">{userCount}</p>
+              <div
+                className="card text-dark bg-info"
+                style={{ width: "18rem" }}
+              >
+                <div className="card-body">
+                  <h5 className="card-title">User Count</h5>
+                  <p className="card-text">
+                    <People /> {userCount}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="col-3">
-              <div class="card text-dark bg-info" style={{ width: "18rem" }}>
-                <div class="card-body">
-                  <h5 class="card-title">Book Count</h5>
-                  <p class="card-text">{bookCount}</p>
+              <div
+                className="card text-dark bg-info"
+                style={{ width: "18rem" }}
+              >
+                <div className="card-body">
+                  <h5 className="card-title">Book Count</h5>
+                  <p className="card-text">
+                    <BookHalf /> {bookCount}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="col-3">
-              <div class="card text-dark bg-info" style={{ width: "18rem" }}>
-                <div class="card-body">
-                  <h5 class="card-title">Category Count</h5>
-                  <p class="card-text">{categoryCount}</p>
+              <div
+                className="card text-dark bg-info"
+                style={{ width: "18rem" }}
+              >
+                <div className="card-body">
+                  <h5 className="card-title">Category Count</h5>
+                  <p className="card-text">
+                    <Tag /> {categoryCount}
+                  </p>
                 </div>
               </div>
             </div>
             <div className="col-3">
-              <div class="card text-dark bg-info" style={{ width: "18rem" }}>
-                <div class="card-body">
-                  <h5 class="card-title">Customer Count</h5>
-                  <p class="card-text">{customerCount}</p>
+              <div
+                className="card text-dark bg-info"
+                style={{ width: "18rem" }}
+              >
+                <div className="card-body">
+                  <h5 className="card-title">Customer Count</h5>
+                  <p className="card-text">
+                    <PersonBoundingBox /> {customerCount}
+                  </p>
                 </div>
               </div>
             </div>

@@ -15,7 +15,7 @@ export default function EditUser() {
       <div className="row">
         <AdminSideBar></AdminSideBar>
         <div className="col-9">
-          <div class="table-responsive">
+          <div className="table-responsive">
             <table className="table table-striped">
               <thead className="thead-light">
                 <tr>

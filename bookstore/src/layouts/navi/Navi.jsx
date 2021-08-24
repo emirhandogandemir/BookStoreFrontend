@@ -58,7 +58,7 @@ export default function Navi(props) {
 
             <div className=" col-sm-6 col-lg-3 p-3 navLink ">
               <NavLink
-                to="/"
+                to="/contact"
                 activeClassName="navLink"
                 style={{ textDecoration: "none" }}
               >

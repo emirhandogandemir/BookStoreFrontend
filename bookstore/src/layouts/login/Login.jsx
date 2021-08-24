@@ -8,7 +8,6 @@ import jwt_decode from "jwt-decode";
 
 export default function Login() {
   const history = useHistory();
-
   /**
    * TODO: Orhan was here :)
    *   - Orhan the real fixing
@@ -39,7 +38,7 @@ export default function Login() {
     const roles = jwt_decode(data.token).roles.split(",");
     return roles.some((it) => it === "ROLE_ADMIN" || it === "ROLE_SUPER_ADMIN")
       ? history.push("/admin", { isAdmin: true })
-      : history.push("/");
+      : history.push("/", { isAdmin: false });
   };
 
   return (

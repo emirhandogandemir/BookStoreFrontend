@@ -5,8 +5,12 @@ import "./homePage.scss";
 import BookService from "../../services/bookService";
 import Card from "../card/Card";
 import BookList from "../../pages/BookList";
-
+import { useLocation } from "react-router";
 export default function HomePage() {
+  const location = useLocation();
+
+  console.log(location);
+
   return (
     <div>
       <div className="container-fluid">
