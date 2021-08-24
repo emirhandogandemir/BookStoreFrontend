@@ -1,6 +1,7 @@
 import React from "react";
 import "./signUp.scss";
 import { useFormik } from "formik";
+import UserService from "../../services/userService";
 import validation from "./validation";
 export default function SignUp() {
   const formik = useFormik({
@@ -9,9 +10,13 @@ export default function SignUp() {
       password: "",
       firstName: "",
       lastName: "",
+      username: "",
     },
     onSubmit: (values) => {
-      console.log(values);
+      //console.log(values);
+      UserService.register(values)
+        .then(console.log("Sisteme başarı ile eklendi"))
+        .catch(console.log("sisteme eklenmede hata ile karşılandı"));
     },
     validationSchema: validation,
   });
@@ -33,6 +38,20 @@ export default function SignUp() {
           />
           {formik.errors && formik.touched.email && (
             <div className="errorLogin">{formik.errors.email}</div>
+          )}
+          <label className="labelLogin" htmlFor="email">
+            Username
+          </label>{" "}
+          <input
+            className="inputLogin"
+            type="text"
+            name="username"
+            onChange={formik.handleChange}
+            value={formik.values.username}
+            onBlur={formik.handleBlur}
+          />
+          {formik.errors && formik.touched.username && (
+            <div className="errorLogin">{formik.errors.username}</div>
           )}
           <label className="labelLogin" htmlFor="password">
             Password

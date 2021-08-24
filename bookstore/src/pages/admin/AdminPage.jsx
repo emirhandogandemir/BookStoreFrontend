@@ -13,8 +13,8 @@ export default function AdminPage() {
       <div className="row">
         <AdminSideBar></AdminSideBar>
         <div className="col-9 bg-danger">
-          <EditCategory></EditCategory>
-          <EditCustomer></EditCustomer>
+          {/* <EditCategory></EditCategory>
+          <EditCustomer></EditCustomer> */}
         </div>
         <div className="col-1"></div>
       </div>

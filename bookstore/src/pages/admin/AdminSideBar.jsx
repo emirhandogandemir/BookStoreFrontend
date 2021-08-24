@@ -4,6 +4,7 @@ import "./adminsidebar.scss";
 export default function AdminSideBar() {
   return (
     <div className="col-2 ">
+      <div className="row p-3 text-dark  bg-primary">Edit List</div>
       <Link to="/admineditcategory" style={{ textDecoration: "none" }}>
         <div className="row p-3 text-white  bg-dark sidebar">
           {" "}
