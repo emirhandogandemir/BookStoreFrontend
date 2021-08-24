@@ -12,6 +12,9 @@ class UserService {
   getAll() {
     return axios.get("http://localhost:8080/api/users/getAll");
   }
+  countGetAll() {
+    return axios.get("http://localhost:8080/api/users/countGetAll");
+  }
 }
 
 export default new UserService();

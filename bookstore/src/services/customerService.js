@@ -11,4 +11,7 @@ export default class CustomerService {
   getAll() {
     return axios.get("http://localhost:8080/api/customers/getAll");
   }
+  countGetAll() {
+    return axios.get("http://localhost:8080/api/customers/countGetAll");
+  }
 }

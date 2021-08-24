@@ -22,4 +22,7 @@ export default class BookService {
       "http://localhost:8080/api/books/getByCategoryId?categoryId=" + categoryId
     );
   }
+  countGetAll() {
+    return axios.get("http://localhost:8080/api/books/countGetAll");
+  }
 }

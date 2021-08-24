@@ -23,4 +23,7 @@ export default class CategoryService {
   getAll() {
     return axios.get("http://localhost:8080/api/categories/getAll");
   }
+  countGetAll() {
+    return axios.get("http://localhost:8080/api/categories/countGetAll");
+  }
 }
