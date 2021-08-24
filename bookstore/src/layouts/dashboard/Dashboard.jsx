@@ -12,6 +12,9 @@ import AdminPage from "../../pages/admin/AdminPage";
 import EditCustomer from "../../pages/Edit/EditCustomer";
 import EditPublisher from "../../pages/Edit/EditPublisher";
 import EditCategory from "../../pages/Edit/EditCategory";
+import EditAuthor from "../../pages/Edit/EditAuthor";
+import EditUser from "../../pages/Edit/EditUser";
+import EditBook from "../../pages/Edit/EditBook";
 export default function Dashboard() {
   return (
     <div>
@@ -35,6 +38,9 @@ export default function Dashboard() {
           path="/admineditpublisher"
           component={EditPublisher}
         ></Route>
+        <Route exact path="/admineditauthor" component={EditAuthor}></Route>
+        <Route exact path="/adminedituser" component={EditUser}></Route>
+        <Route exact path="/admineditbook" component={EditBook}></Route>
         <Route path="*" component={Error404}></Route>
       </Switch>
     </div>

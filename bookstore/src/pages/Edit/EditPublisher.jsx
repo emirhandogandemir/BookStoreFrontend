@@ -30,7 +30,7 @@ export default function EditPublisher() {
                 <tr>
                   <td>{publisher.name}</td>
                   <td>{publisher.email}</td>
-                  <td>{publisher.website}</td>
+                  <td>{publisher.webSite}</td>
                   <td>
                     <button type="button" className="btn btn-primary">
                       Update

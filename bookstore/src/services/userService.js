@@ -8,6 +8,10 @@ class UserService {
   register(user) {
     return axios.post("http://localhost:8080/api/auth/register", user);
   }
+
+  getAll() {
+    return axios.get("http://localhost:8080/api/users/getAll");
+  }
 }
 
 export default new UserService();

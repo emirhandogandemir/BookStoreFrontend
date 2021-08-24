@@ -11,12 +11,19 @@ export default function AdminSideBar() {
           Edit Categories
         </div>
       </Link>
-      <div className="row p-3 text-white  bg-dark"> Edit Books</div>
+      <Link to="/admineditbook" style={{ textDecoration: "none" }}>
+        <div className="row p-3 text-white  bg-dark"> Edit Book</div>
+      </Link>
       <Link to="/admineditpublisher" style={{ textDecoration: "none" }}>
         <div className="row p-3 text-white  bg-dark"> Edit Publisher</div>
       </Link>
-      <div className="row p-3 text-white  bg-dark"> Edit Authors</div>
-      <div className="row p-3 text-white  bg-dark"> Edit Users</div>
+
+      <Link to="/admineditauthor" style={{ textDecoration: "none" }}>
+        <div className="row p-3 text-white  bg-dark"> Edit Author</div>
+      </Link>
+      <Link to="/adminedituser" style={{ textDecoration: "none" }}>
+        <div className="row p-3 text-white  bg-dark"> Edit Users</div>
+      </Link>
       <Link to="/admineditcustomer" style={{ textDecoration: "none" }}>
         <div className="row p-3 text-white  bg-dark"> Edit Customers</div>
       </Link>
