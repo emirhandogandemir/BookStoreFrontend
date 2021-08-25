@@ -1,12 +1,20 @@
 import axios from "axios";
 export default class CustomerService {
-  add() {}
+  add(values) {
+    return axios.post("http://localhost:8080/api/customers/add", values);
+  }
 
-  update() {}
+  update(values) {
+    return axios.post("http://localhost:8080/api/customers/update", values);
+  }
 
-  delete() {}
+  delete(id) {
+    return axios.post("http://localhost:8080/api/customers/delete?id=" + id);
+  }
 
-  getById() {}
+  getById(id) {
+    return axios.get("http://localhost:8080/api/customers/getById?id=" + id);
+  }
 
   getAll() {
     return axios.get("http://localhost:8080/api/customers/getAll");

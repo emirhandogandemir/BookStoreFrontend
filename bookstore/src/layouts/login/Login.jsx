@@ -5,9 +5,10 @@ import { useHistory } from "react-router";
 import validation from "./validation";
 import UserService from "../../services/userService";
 import jwt_decode from "jwt-decode";
-
+import { useUser } from "../../context/UserContext";
 export default function Login() {
   const history = useHistory();
+  const [state, dispatch] = useUser();
   /**
    * TODO: Orhan was here :)
    *   - Orhan the real fixing
@@ -34,13 +35,29 @@ export default function Login() {
       });
   };
 
+  function historyAdmin() {
+    dispatch({ type: "SET_IS_ADMIN", payload: true });
+    localStorage.setItem("isAdmin", true);
+    localStorage.setItem("username", formik.values.username);
+    dispatch({ type: "SET_USERNAME", payload: formik.values.username });
+    history.push("/admin");
+  }
+
+  function historyUser() {
+    dispatch({ type: "SET_USERNAME", payload: formik.values.username });
+    localStorage.setItem("isAdmin", false);
+    localStorage.setItem("username", formik.values.username);
+    dispatch({ type: "SET_IS_ADMIN", payload: false });
+    history.push("/");
+  }
+
   const redirect = ({ data }) => {
     const roles = jwt_decode(data.token).roles.split(",");
     return roles.some((it) => it === "ROLE_ADMIN" || it === "ROLE_SUPER_ADMIN")
-      ? history.push("/admin", { isAdmin: true })
-      : history.push("/", { isAdmin: false });
+      ? historyAdmin()
+      : historyUser();
   };
-
+  //console.log(user.isAdmin);
   return (
     <div style={{ height: "600px" }}>
       <div className="loginBody">

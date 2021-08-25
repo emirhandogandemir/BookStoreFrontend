@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import CustomerService from "../../services/customerService";
 import AdminSideBar from "../admin/AdminSideBar";
+import UpdateCustomer from "./Update/UpdateCustomer";
 export default function EditCustomer() {
   const [customers, setCustomers] = useState([]);
 
@@ -34,9 +35,7 @@ export default function EditCustomer() {
                   <td>{customer.phoneNumber}</td>
                   <td>{customer.email}</td>
                   <td>
-                    <button type="button" className="btn btn-primary">
-                      Update
-                    </button>
+                    <UpdateCustomer customer={customer}></UpdateCustomer>
                   </td>
                   <td>
                     <button type="button" className="btn btn-danger">
@@ -50,6 +49,10 @@ export default function EditCustomer() {
                   </td>
                 </tr>
               ))}
+
+              <button type="button" className="btn btn-primary btn-lg">
+                new Button
+              </button>
             </tbody>
           </table>
         </div>

@@ -17,11 +17,14 @@ import CustomerService from "../../services/customerService";
 import CategoryService from "../../services/categoryService";
 import { useLocation } from "react-router";
 import Unauthorized from "../../layouts/UnAuthorized/Unauthorized";
+import { useUser } from "../../context/UserContext";
 export default function AdminPage() {
   const [bookCount, setBookCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [customerCount, setCustomerCount] = useState(0);
   const [categoryCount, setCategoryCount] = useState(0);
+
+  const [state] = useUser();
 
   const location = useLocation();
 
@@ -77,86 +80,92 @@ export default function AdminPage() {
       ],
     },
   };
-  //console.log(location.state.isAdmin);
 
   return (
-    <div className="container-fluid">
-      <p className="fs-3"> Admin Paneli</p>
-      <hr />
-      <div className="row">
-        <AdminSideBar></AdminSideBar>
-        <div className="col-9">
+    <div>
+      {state.isAdmin ? (
+        <div className="container-fluid">
+          <p className="fs-3"> Admin Paneli</p>
+          <hr />
           <div className="row">
-            <div className="col-3">
-              <div
-                className="card text-dark bg-info"
-                style={{ width: "18rem" }}
-              >
-                <div className="card-body">
-                  <h5 className="card-title">User Count</h5>
-                  <p className="card-text">
-                    <People /> {userCount}
-                  </p>
+            <AdminSideBar></AdminSideBar>
+            <div className="col-9">
+              <div className="row">
+                <div className="col-3">
+                  <div
+                    className="card text-dark bg-info"
+                    style={{ width: "18rem" }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">User Count</h5>
+                      <p className="card-text">
+                        <People /> {userCount}
+                        {state.isAdmin ? "true" : "false"}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div
+                    className="card text-dark bg-info"
+                    style={{ width: "18rem" }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">Book Count</h5>
+                      <p className="card-text">
+                        <BookHalf /> {bookCount}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div
+                    className="card text-dark bg-info"
+                    style={{ width: "18rem" }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">Category Count</h5>
+                      <p className="card-text">
+                        <Tag /> {categoryCount}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div className="col-3">
+                  <div
+                    className="card text-dark bg-info"
+                    style={{ width: "18rem" }}
+                  >
+                    <div className="card-body">
+                      <h5 className="card-title">Customer Count</h5>
+                      <p className="card-text">
+                        <PersonBoundingBox /> {customerCount}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="col-3">
-              <div
-                className="card text-dark bg-info"
-                style={{ width: "18rem" }}
-              >
-                <div className="card-body">
-                  <h5 className="card-title">Book Count</h5>
-                  <p className="card-text">
-                    <BookHalf /> {bookCount}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-3">
-              <div
-                className="card text-dark bg-info"
-                style={{ width: "18rem" }}
-              >
-                <div className="card-body">
-                  <h5 className="card-title">Category Count</h5>
-                  <p className="card-text">
-                    <Tag /> {categoryCount}
-                  </p>
-                </div>
-              </div>
-            </div>
-            <div className="col-3">
-              <div
-                className="card text-dark bg-info"
-                style={{ width: "18rem" }}
-              >
-                <div className="card-body">
-                  <h5 className="card-title">Customer Count</h5>
-                  <p className="card-text">
-                    <PersonBoundingBox /> {customerCount}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <div className="row mt-4">
-            <div className="col-7">
-              {" "}
-              <div className="header">
-                <h3 className="title">System statistics </h3>
+              <div className="row mt-4">
+                <div className="col-7">
+                  {" "}
+                  <div className="header">
+                    <h3 className="title">System statistics </h3>
+                  </div>
+                  <Bar data={data} options={options} />
+                </div>
+                <div className="col-1"></div>
+                <div className="col-4">
+                  <Pie data={data} />
+                </div>
               </div>
-              <Bar data={data} options={options} />
             </div>
             <div className="col-1"></div>
-            <div className="col-4">
-              <Pie data={data} />
-            </div>
           </div>
         </div>
-        <div className="col-1"></div>
-      </div>
+      ) : (
+        <Unauthorized></Unauthorized>
+      )}
     </div>
   );
 }

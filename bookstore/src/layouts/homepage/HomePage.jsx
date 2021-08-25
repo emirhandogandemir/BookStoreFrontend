@@ -6,18 +6,19 @@ import BookService from "../../services/bookService";
 import Card from "../card/Card";
 import BookList from "../../pages/BookList";
 import { useLocation } from "react-router";
+import { useUser } from "../../context/UserContext";
 export default function HomePage() {
   const location = useLocation();
+  const { user, setUser } = useUser();
 
-  console.log(location);
-
+  console.log(user);
   return (
     <div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-6">
             <div className="header-homepage">
-              The BookWorm Editors
+              The BookWorm Editors -- {user} --
               <h3>Featured Books Of the September</h3>
               <button className="btn btn-dark btn-lg">See More</button>
             </div>

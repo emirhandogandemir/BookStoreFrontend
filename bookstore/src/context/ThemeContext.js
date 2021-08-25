@@ -1,9 +1,22 @@
-// import { createContext } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
-// const ThemeContext = createContext();
+const ThemeContext = createContext();
 
-// export const ThemeProvider = ([children]) => {
-//   return <ThemeContext.Provider value="dark"></ThemeContext.Provider>;
-// };
+export const ThemeProvider = ({ children }) => {
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "Light");
 
-// export default ThemeContext;
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const values = {
+    theme,
+    setTheme,
+  };
+
+  return (
+    <ThemeContext.Provider value={values}>{children}</ThemeContext.Provider>
+  );
+};
+
+export const useTheme = () => useContext(ThemeContext);
