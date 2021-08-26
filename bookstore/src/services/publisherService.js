@@ -1,11 +1,17 @@
 import axios from "axios";
 
 export default class PublisherService {
-  add() {}
+  add(values) {
+    return axios.post("http://localhost:8080/api/publishers/add", values);
+  }
 
-  update() {}
+  update(values) {
+    return axios.post("http://localhost:8080/api/publishers/update", values);
+  }
 
-  delete() {}
+  delete(id) {
+    return axios.post("http://localhost:8080/api/publishers/delete?id=" + id);
+  }
 
   getAll() {
     return axios.get("http://localhost:8080/api/publishers/getAll");

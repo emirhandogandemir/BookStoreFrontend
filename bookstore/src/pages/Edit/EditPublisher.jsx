@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import PublisherService from "../../services/publisherService";
 import AdminSideBar from "../admin/AdminSideBar";
+import UpdatePublisher from "./Update/UpdatePublisher";
+import AddPublisher from "../Edit/Add/AddPublisher";
+import DeletePublisher from "./Delete/DeletePublisher";
 export default function EditPublisher() {
   const [publishers, setPublishers] = useState([]);
 
@@ -32,21 +35,47 @@ export default function EditPublisher() {
                   <td>{publisher.email}</td>
                   <td>{publisher.webSite}</td>
                   <td>
-                    <button type="button" className="btn btn-primary">
-                      Update
-                    </button>
+                    <UpdatePublisher
+                      publisher={publisher}
+                      onSuccess={handleCustomerUpdateSuccess}
+                    ></UpdatePublisher>
                   </td>
                   <td>
-                    <button type="button" className="btn btn-danger">
-                      Delete
-                    </button>
+                    <DeletePublisher
+                      id={publisher.id}
+                      onSuccess={handleCustomerDeleteSuccess}
+                    ></DeletePublisher>
                   </td>
                 </tr>
               ))}
+              <AddPublisher onSuccess={handleCustomerAddSuccess}></AddPublisher>
             </tbody>
           </table>
         </div>
       </div>
     </div>
   );
+
+  function handleCustomerUpdateSuccess(updatedPublisher) {
+    const newPublisher = [...publishers]; // aynı referans olmasın diye
+    const targetIndex = publishers.findIndex(
+      (publisher) => publisher.id === updatedPublisher.id
+    ); // değişiklik yapılmış olan verinin indexini
+    newPublisher.splice(targetIndex, 1, updatedPublisher);
+    setPublishers(newPublisher);
+  }
+
+  function handleCustomerAddSuccess(updatedPublisher) {
+    const newPublisher = [...publishers, updatedPublisher]; // aynı referans olmasın diye
+    setPublishers(newPublisher);
+  }
+
+  function handleCustomerDeleteSuccess(id) {
+    const newPublisher = [...publishers];
+    const targetIndex = publishers.findIndex(
+      (publisher) => publisher.id === id
+    );
+    newPublisher.splice(targetIndex, 1);
+    setPublishers(newPublisher);
+  }
 }

@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { useFormik } from "formik";
-import * as Yup from "yup";
+import { useState } from "react";
+import PublisherService from "../../../services/publisherService";
 import { Modal } from "react-bootstrap";
-import CustomerService from "../../../services/customerService";
-export default function DeleteCustomer({ id, onSuccess }) {
+export default function DeletePublisher({ id, onSuccess }) {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -13,8 +11,8 @@ export default function DeleteCustomer({ id, onSuccess }) {
   };
 
   const deleteCustomer = (id) => {
-    let customerService = new CustomerService();
-    customerService
+    let publisherService = new PublisherService();
+    publisherService
       .delete(id)
       .then("başarı ile silindi")
       .catch("silinirken bir hata ile karşılaşıldı");

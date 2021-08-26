@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import CustomerService from "../../services/customerService";
 import AdminSideBar from "../admin/AdminSideBar";
+import AddCustomer from "./Add/AddCustomer";
+import DeleteCustomer from "./Delete/DeleteCustomer";
 import UpdateCustomer from "./Update/UpdateCustomer";
 export default function EditCustomer() {
   const [customers, setCustomers] = useState([]);
@@ -35,12 +37,16 @@ export default function EditCustomer() {
                   <td>{customer.phoneNumber}</td>
                   <td>{customer.email}</td>
                   <td>
-                    <UpdateCustomer customer={customer}></UpdateCustomer>
+                    <UpdateCustomer
+                      customer={customer}
+                      onSuccess={handleCustomerUpdateSuccess}
+                    ></UpdateCustomer>
                   </td>
                   <td>
-                    <button type="button" className="btn btn-danger">
-                      Delete
-                    </button>
+                    <DeleteCustomer
+                      id={customer.id}
+                      onSuccess={handleCustomerDeleteSuccess}
+                    ></DeleteCustomer>
                   </td>
                   <td>
                     <button type="button" className="btn btn-secondary">
@@ -49,10 +55,7 @@ export default function EditCustomer() {
                   </td>
                 </tr>
               ))}
-
-              <button type="button" className="btn btn-primary btn-lg">
-                new Button
-              </button>
+              <AddCustomer onSuccess={handleCustomerAddSuccess}></AddCustomer>
             </tbody>
           </table>
         </div>
@@ -60,4 +63,34 @@ export default function EditCustomer() {
       </div>
     </div>
   );
+
+  function handleCustomerUpdateSuccess(updatedCustomer) {
+    const newCustomers = [...customers]; // aynı referans olmasın diye
+    const targetIndex = customers.findIndex(
+      (customer) => customer.id === updatedCustomer.id
+    ); // değişiklik yapılmış olan verinin indexini
+    newCustomers.splice(targetIndex, 1, updatedCustomer);
+    setCustomers(newCustomers);
+  }
+
+  function handleCustomerAddSuccess(updatedCustomer) {
+    const newCustomers = [...customers, updatedCustomer]; // aynı referans olmasın diye
+    setCustomers(newCustomers);
+  }
+
+  function handleCustomerDeleteSuccess(id) {
+    const newCustomers = [...customers];
+    const targetIndex = customers.findIndex((customer) => customer.id === id);
+    newCustomers.splice(targetIndex, 1);
+    setCustomers(newCustomers);
+  }
+
+  // function handleEducationUpdateSuccess(updatedEducation) {
+  //   const newEducations = [...jobSeekerCv.educations];
+  //   const targetIndex = jobSeekerCv.educations.findIndex(
+  //     (education) => education.id === updatedEducation.id
+  //   );
+  //   newEducations.splice(targetIndex, 1, updatedEducation);
+  //   setJobSeekerCvs({ ...jobSeekerCv, educations: newEducations });
+  // }
 }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import "./update.scss";
+import PublisherService from "../../../services/publisherService";
 import { Modal } from "react-bootstrap";
-import CustomerService from "../../../services/customerService";
-export default function UpdateCustomer({ customer, onSuccess }) {
+
+export default function AddPublisher({ onSuccess }) {
   const [show, setShow] = useState(false);
   const handleClose = () => {
     setShow(false);
@@ -15,12 +15,9 @@ export default function UpdateCustomer({ customer, onSuccess }) {
   //console.log(customer);
   const formik = useFormik({
     initialValues: {
-      email: customer?.email,
-      id: customer?.id,
-      password: customer?.password,
-      firstName: customer?.firstName,
-      lastName: customer?.lastName,
-      phoneNumber: customer?.phoneNumber,
+      email: "",
+      name: "",
+      webSite: "",
     },
     enableReinitialize: true,
 
@@ -31,9 +28,9 @@ export default function UpdateCustomer({ customer, onSuccess }) {
     }),
     onSubmit: (values) => {
       //console.log(values);
-      let customerService = new CustomerService();
-      customerService
-        .update(values)
+      let publisherService = new PublisherService();
+      publisherService
+        .add(values)
         .then("başarılı bir şekilde güncellendi")
         .catch("güncelleme esnasında hata fırlatıldı");
       onSuccess(values);
@@ -42,13 +39,13 @@ export default function UpdateCustomer({ customer, onSuccess }) {
 
   return (
     <>
-      <button className="btn btn-primary" onClick={handleShow}>
-        Update
+      <button className="btn btn-primary " onClick={handleShow}>
+        Add New Publisher
       </button>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Update Modal</Modal.Title>
+          <Modal.Title>Update Publisher Modal</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form onSubmit={formik.handleSubmit}>
@@ -67,69 +64,39 @@ export default function UpdateCustomer({ customer, onSuccess }) {
             {formik.errors && formik.touched.email && (
               <div className="errorLogin">{formik.errors.email}</div>
             )}
-            <label className="labelLogin" htmlFor="password">
-              Password
-            </label>{" "}
-            <input
-              className="inputLogin"
-              type="password"
-              placeholder="password"
-              name="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors && formik.touched.password && (
-              <div className="errorLogin">{formik.errors.password}</div>
-            )}
-            <label className="labelLogin" htmlFor="firstName">
-              firstName
+            <label className="labelLogin" htmlFor="email">
+              name
             </label>{" "}
             <input
               className="inputLogin"
               type="text"
-              placeholder="firstName"
-              name="firstName"
+              name="name"
+              placeholder="publisher name"
               onChange={formik.handleChange}
-              value={formik.values.firstName}
+              value={formik.values.name}
               onBlur={formik.handleBlur}
             />
-            {formik.errors && formik.touched.firstName && (
-              <div className="errorLogin">{formik.errors.firstName}</div>
+            {formik.errors && formik.touched.name && (
+              <div className="errorLogin">{formik.errors.name}</div>
             )}
-            <label className="labelLogin" htmlFor="firstName">
-              LastName
+            <label className="labelLogin" htmlFor="email">
+              Wwbsite
             </label>{" "}
             <input
               className="inputLogin"
               type="text"
-              name="lastName"
-              placeholder="lastName"
+              name="webSite"
+              placeholder="publisher webSite"
               onChange={formik.handleChange}
-              value={formik.values.lastName}
+              value={formik.values.webSite}
               onBlur={formik.handleBlur}
             />
-            {formik.errors && formik.touched.lastName && (
-              <div className="errorLogin">{formik.errors.lastName}</div>
-            )}
-            <label className="labelLogin" htmlFor="firstName">
-              PhoneNumber
-            </label>{" "}
-            <input
-              className="inputLogin"
-              type="text"
-              name="phoneNumber"
-              placeholder="telephoneNumber"
-              onChange={formik.handleChange}
-              value={formik.values.phoneNumber}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors && formik.touched.phoneNumber && (
-              <div className="errorLogin">{formik.errors.phoneNumber}</div>
+            {formik.errors && formik.touched.webSite && (
+              <div className="errorLogin">{formik.errors.webSite}</div>
             )}
             <br />
             <button className="buttonLogin" type="submit">
-              Update
+              Add
             </button>
             <br />
           </form>
