@@ -13,9 +13,21 @@ export default function CategoryList() {
     <div className="container">
       <div className="row">
         {categories.map((category, index) => (
-          <Link to={`/categories/${category.id}`}>
-            <div className="col-sm-6 col-lg-3 "> {category.name}</div>
-          </Link>
+          <div className="card shadow-lg m-3">
+            <div className="card-header">{category.name}</div>
+            <div className="card-body">
+              <h5 className="card-title"></h5>
+              <p className="card-text">
+                With supporting text below as a natural lead-in to additional
+                content.
+              </p>
+              <Link to={`/categories/${category.id}`}>
+                <button className="btn btn-danger btn-lg">
+                  {category.name}
+                </button>
+              </Link>
+            </div>
+          </div>
         ))}
       </div>
     </div>

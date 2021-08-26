@@ -40,7 +40,7 @@ export default function Navi(props) {
               <NavLink
                 to="/categories"
                 activeClassName="navLink"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "black" }}
               >
                 Categories
               </NavLink>
@@ -50,7 +50,7 @@ export default function Navi(props) {
               <NavLink
                 to="/blog"
                 activeClassName="navLink"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "black" }}
               >
                 Blog
               </NavLink>
@@ -60,7 +60,7 @@ export default function Navi(props) {
               <NavLink
                 to="/contact"
                 activeClassName="navLink"
-                style={{ textDecoration: "none" }}
+                style={{ textDecoration: "none", color: "black" }}
               >
                 İletişim
               </NavLink>
