@@ -1,11 +1,17 @@
 import axios from "axios";
 
 export default class AuthorService {
-  add() {}
+  add(values) {
+    return axios.post("http://localhost:8080/api/authors/add", values);
+  }
 
-  update() {}
+  update(values) {
+    return axios.post("http://localhost:8080/api/authors/update", values);
+  }
 
-  delete() {}
+  delete(id) {
+    return axios.post("http://localhost:8080/api/authors/delete?id=" + id);
+  }
 
   getById(authorId) {}
 
