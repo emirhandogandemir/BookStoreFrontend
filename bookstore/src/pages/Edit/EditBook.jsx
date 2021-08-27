@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import AdminSideBar from "../admin/AdminSideBar";
 import BookService from "../../services/bookService";
+import DeleteBook from "./Delete/DeleteBook";
+import AddBook from "./Add/AddBook";
+import UpdateBook from "./Update/UpdateBook";
 export default function EditBook() {
   const [books, setBooks] = useState([]);
   useEffect(() => {
@@ -39,17 +42,20 @@ export default function EditBook() {
                     </td>
                     <td>{book.category.name}</td>
                     <td>
-                      <button type="button" className="btn btn-primary">
-                        Update
-                      </button>
+                      <UpdateBook
+                        onSuccess={handleCustomerUpdateSuccess}
+                        book={book}
+                      ></UpdateBook>
                     </td>
                     <td>
-                      <button type="button" className="btn btn-danger">
-                        Delete
-                      </button>
+                      <DeleteBook
+                        id={book.id}
+                        onSuccess={handleCustomerDeleteSuccess}
+                      ></DeleteBook>
                     </td>
                   </tr>
                 ))}
+                <AddBook onSuccess={handleCustomerAddSuccess}></AddBook>
               </tbody>
             </table>
           </div>
@@ -57,4 +63,21 @@ export default function EditBook() {
       </div>
     </div>
   );
+  function handleCustomerUpdateSuccess(updatedBook) {
+    const newBooks = [...books]; // aynı referans olmasın diye
+    const targetIndex = books.findIndex((book) => book.id === updatedBook.id); // değişiklik yapılmış olan verinin indexini
+    newBooks.splice(targetIndex, 1, updatedBook);
+    setBooks(newBooks);
+  }
+  function handleCustomerDeleteSuccess(id) {
+    const newBooks = [...books];
+    const targetIndex = books.findIndex((book) => book.id === id);
+    newBooks.splice(targetIndex, 1);
+    setBooks(newBooks);
+  }
+
+  function handleCustomerAddSuccess(updatedBook) {
+    const newBooks = [...books, updatedBook]; // aynı referans olmasın diye
+    setBooks(newBooks);
+  }
 }

@@ -1,13 +1,26 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router";
 import "./nav.scss";
 
 import ThemeContext from "../../context/ThemeContext";
+import Logout from "../logout/Logout";
 export default function Navi(props) {
   //const data = useContext(ThemeContext);
-
+  const history = useHistory();
+  const [isEntered, setIsEntered] = useState(false);
   //console.log(data);
+
+  function handleLogOut() {
+    setIsEntered(false);
+    history.pushState("/");
+  }
+
+  function handleLogin() {
+    setIsEntered(true);
+  }
+
   return (
     <nav className="container-fluid p-3">
       <p>Can We help you ? + 554389768</p>

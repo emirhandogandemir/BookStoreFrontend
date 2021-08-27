@@ -9,6 +9,7 @@ import Card from "./layouts/card/Card";
 import Dashboard from "./layouts/dashboard/Dashboard";
 import { useLocation } from "react-router";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "semantic-ui-css/semantic.min.css";
 
 function App() {
   const location = useLocation();
