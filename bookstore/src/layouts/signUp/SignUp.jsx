@@ -22,85 +22,93 @@ export default function SignUp() {
   });
 
   return (
-    <div className="loginBody">
-      <div className="loginBody__child">
-        <form onSubmit={formik.handleSubmit}>
-          <label className="labelLogin" htmlFor="email">
-            Email
-          </label>{" "}
-          <input
-            className="inputLogin"
-            type="email"
-            name="email"
-            onChange={formik.handleChange}
-            value={formik.values.email}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors && formik.touched.email && (
-            <div className="errorLogin">{formik.errors.email}</div>
-          )}
-          <label className="labelLogin" htmlFor="email">
-            Username
-          </label>{" "}
-          <input
-            className="inputLogin"
-            type="text"
-            name="username"
-            onChange={formik.handleChange}
-            value={formik.values.username}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors && formik.touched.username && (
-            <div className="errorLogin">{formik.errors.username}</div>
-          )}
-          <label className="labelLogin" htmlFor="password">
-            Password
-          </label>{" "}
-          <input
-            className="inputLogin"
-            type="password"
-            name="password"
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors && formik.touched.password && (
-            <div className="errorLogin">{formik.errors.password}</div>
-          )}
-          <label className="labelLogin" htmlFor="firstName">
-            firstName
-          </label>{" "}
-          <input
-            className="inputLogin"
-            type="text"
-            name="firstName"
-            onChange={formik.handleChange}
-            value={formik.values.firstName}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors && formik.touched.firstName && (
-            <div className="errorLogin">{formik.errors.firstName}</div>
-          )}
-          <label className="labelLogin" htmlFor="firstName">
-            LastName
-          </label>{" "}
-          <input
-            className="inputLogin"
-            type="text"
-            name="lastName"
-            onChange={formik.handleChange}
-            value={formik.values.lastName}
-            onBlur={formik.handleBlur}
-          />
-          {formik.errors && formik.touched.lastName && (
-            <div className="errorLogin">{formik.errors.lastName}</div>
-          )}
-          <br />
-          <button className="buttonLogin" type="submit">
-            Sign Up
-          </button>
-          <br />
-        </form>
+    <div className="container loginback">
+      <div className="row">
+        <div className="col-3"></div>
+        <div className="col-6  mb-5">
+          <div className="">
+            <h2>Sign Up</h2>
+            <div className="loginBody__child">
+              <form onSubmit={formik.handleSubmit}>
+                <label className="labelLogin" htmlFor="email">
+                  Email
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="email"
+                  name="email"
+                  onChange={formik.handleChange}
+                  value={formik.values.email}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.email && (
+                  <div className="errorLogin">{formik.errors.email}</div>
+                )}
+                <label className="labelLogin" htmlFor="email">
+                  Username
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="text"
+                  name="username"
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.username && (
+                  <div className="errorLogin">{formik.errors.username}</div>
+                )}
+                <label className="labelLogin" htmlFor="password">
+                  Password
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="password"
+                  name="password"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.password && (
+                  <div className="errorLogin">{formik.errors.password}</div>
+                )}
+                <label className="labelLogin" htmlFor="firstName">
+                  firstName
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="text"
+                  name="firstName"
+                  onChange={formik.handleChange}
+                  value={formik.values.firstName}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.firstName && (
+                  <div className="errorLogin">{formik.errors.firstName}</div>
+                )}
+                <label className="labelLogin" htmlFor="firstName">
+                  LastName
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="text"
+                  name="lastName"
+                  onChange={formik.handleChange}
+                  value={formik.values.lastName}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.lastName && (
+                  <div className="errorLogin">{formik.errors.lastName}</div>
+                )}
+                <br />
+                <button className="buttonLogin" type="submit">
+                  Sign Up
+                </button>
+                <br />
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import "./card.scss";
 export default function Card({ book }) {
   return (
-    <div className="col-sm-6 col-lg-3">
+    <div className="col-sm-6 col-lg-3 ">
       <div className="cardHomePage">
         <img
           src={book.image.url}
           alt="bookstore"
           className="img-fluid"
-          style={{ maxHeight: "250px" }}
+          style={{
+            maxHeight: "250px",
+            maxWidth: "200px",
+            minHeight: "250px",
+            minWidth: "200px",
+          }}
         />
         <p>Kitap Adı:{book.name}</p>
         <p>Kitap Özeti{book.summary}</p>

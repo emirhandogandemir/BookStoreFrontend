@@ -26,7 +26,6 @@ export default function EditCustomer() {
                 <th scope="col">Email</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
-                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
@@ -47,11 +46,6 @@ export default function EditCustomer() {
                       id={customer.id}
                       onSuccess={handleCustomerDeleteSuccess}
                     ></DeleteCustomer>
-                  </td>
-                  <td>
-                    <button type="button" className="btn btn-secondary">
-                      Detail
-                    </button>
                   </td>
                 </tr>
               ))}

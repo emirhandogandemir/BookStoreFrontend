@@ -31,7 +31,7 @@ export default function Login() {
     })
       .then(redirect)
       .catch(() => {
-        throw Error("Aklını alıyoreeee");
+        throw Error("error");
       });
   };
 
@@ -59,44 +59,51 @@ export default function Login() {
   };
   //console.log(user.isAdmin);
   return (
-    <div style={{ height: "600px" }}>
-      <div className="loginBody">
-        <div className="loginBody__child">
-          <form onSubmit={formik.handleSubmit}>
-            <label className="labelLogin" htmlFor="text">
-              username
-            </label>{" "}
-            <input
-              className="inputLogin"
-              type="text"
-              name="username"
-              onChange={formik.handleChange}
-              value={formik.values.username}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors && formik.touched.username && (
-              <div className="errorLogin">{formik.errors.username}</div>
-            )}
-            <label className="labelLogin" htmlFor="password">
-              Password
-            </label>{" "}
-            <input
-              className="inputLogin"
-              type="password"
-              name="password"
-              onChange={formik.handleChange}
-              value={formik.values.password}
-              onBlur={formik.handleBlur}
-            />
-            {formik.errors && formik.touched.password && (
-              <div className="errorLogin">{formik.errors.password}</div>
-            )}
-            <br />
-            <button className="buttonLogin" type="submit" onClick={onClick}>
-              Login
-            </button>
-            <br />
-          </form>
+    <div className="container loginBackground" style={{ height: "600px" }}>
+      <div className="row m-5">
+        <div className="col-3"></div>
+        <div className="col-6 ">
+          {" "}
+          <div className="">
+            <h2>Member Access</h2>
+            <div className="loginBody__child">
+              <form onSubmit={formik.handleSubmit}>
+                <label className="labelLogin" htmlFor="text">
+                  username
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="text"
+                  name="username"
+                  onChange={formik.handleChange}
+                  value={formik.values.username}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.username && (
+                  <div className="errorLogin">{formik.errors.username}</div>
+                )}
+                <label className="labelLogin" htmlFor="password">
+                  Password
+                </label>{" "}
+                <input
+                  className="inputLogin"
+                  type="password"
+                  name="password"
+                  onChange={formik.handleChange}
+                  value={formik.values.password}
+                  onBlur={formik.handleBlur}
+                />
+                {formik.errors && formik.touched.password && (
+                  <div className="errorLogin">{formik.errors.password}</div>
+                )}
+                <br />
+                <button className="buttonLogin" type="submit" onClick={onClick}>
+                  Login
+                </button>
+                <br />
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
