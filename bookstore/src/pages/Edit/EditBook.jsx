@@ -23,6 +23,7 @@ export default function EditBook() {
             <table className="table table-striped">
               <thead className="thead-light">
                 <tr>
+                  <th></th>
                   <th scope="col">İSim</th>
                   <th scope="col">Ücret</th>
                   <th scope="col">Yayın Evi</th>
@@ -32,8 +33,9 @@ export default function EditBook() {
                 </tr>
               </thead>
               <tbody>
-                {books.map((book) => (
+                {books.map((book, index) => (
                   <tr>
+                    <td key={index}></td>
                     <td>{book.name}</td>
                     <td>{book.price}</td>
                     <td>{book.publisher.name}</td>

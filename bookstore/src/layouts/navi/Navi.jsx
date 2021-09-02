@@ -3,11 +3,13 @@ import { NavLink } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router";
 import "./nav.scss";
-
+import { useSelector } from "react-redux";
+import CartSummary from "../cartSummary/CartSummary";
 import ThemeContext from "../../context/ThemeContext";
 import Logout from "../logout/Logout";
 export default function Navi(props) {
   //const data = useContext(ThemeContext);
+  const { cartItems } = useSelector((state) => state.cart);
   const history = useHistory();
   const [isEntered, setIsEntered] = useState(false);
   //console.log(data);
@@ -82,7 +84,9 @@ export default function Navi(props) {
         </div>
         <div className="col-sm-4">
           <div className="row">
-            <div className="col-sm-4"></div>
+            <div className="col-sm-4 p-3">
+              {cartItems.length >= 0 && <CartSummary />}
+            </div>
             <div className="col-sm-4 p-3 navLink">
               <NavLink
                 to="/login"

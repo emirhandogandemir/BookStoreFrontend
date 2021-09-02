@@ -26,10 +26,11 @@ export default function EditPublisher() {
                 <th scope="col">WebSite</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              {publishers.map((publisher) => (
+              {publishers.map((publisher, index) => (
                 <tr>
                   <td>{publisher.name}</td>
                   <td>{publisher.email}</td>
@@ -46,6 +47,7 @@ export default function EditPublisher() {
                       onSuccess={handleCustomerDeleteSuccess}
                     ></DeletePublisher>
                   </td>
+                  <td key={index}></td>
                 </tr>
               ))}
               <AddPublisher onSuccess={handleCustomerAddSuccess}></AddPublisher>

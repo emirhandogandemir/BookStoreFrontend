@@ -14,7 +14,6 @@ export default function EditAuthor() {
       .then((result) => setAuthors(result.data.data))
       .catch("Yazarlar yüklenemedi");
   }, []);
-  console.log(authors);
   return (
     <div className="container-fluid">
       <div className="row">
@@ -29,10 +28,11 @@ export default function EditAuthor() {
                 <th scope="col">Death Date</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              {authors.map((author) => (
+              {authors.map((author, index) => (
                 <tr>
                   <td>{author.firstName}</td>
                   <td>{author.lastName}</td>
@@ -50,6 +50,7 @@ export default function EditAuthor() {
                       onSuccess={handleAuthorDeleteSuccess}
                     ></DeleteAuthor>
                   </td>
+                  <td key={index}></td>
                 </tr>
               ))}
               <AddAuthor onSuccess={handleAuthorAddSuccess}></AddAuthor>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-
+import Cart from "../layouts/cart/Cart";
 import BookService from "../services/bookService";
 export default function BookDetail() {
   let { id } = useParams();
@@ -73,8 +73,7 @@ export default function BookDetail() {
                 </div>
 
                 <div className="col-sm-8">
-                  {" "}
-                  <button className="btn btn-dark">Add To Card</button>
+                  <Cart book={book}> </Cart>
                 </div>
               </div>
             </div>

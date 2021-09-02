@@ -23,10 +23,11 @@ export default function EditCategory() {
                 <th scope="col">Name</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              {categories.map((category) => (
+              {categories.map((category, index) => (
                 <tr>
                   <td>{category.name}</td>
                   <td>
@@ -41,6 +42,7 @@ export default function EditCategory() {
                       onSuccess={handleCategoryDeleteSuccess}
                     ></DeleteCategory>
                   </td>
+                  <td key={index}></td>
                 </tr>
               ))}
               <AddCategory onSuccess={handleCategoryAddSuccess}></AddCategory>

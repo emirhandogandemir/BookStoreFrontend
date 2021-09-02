@@ -1,9 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./signUp.scss";
 import { useFormik } from "formik";
 import UserService from "../../services/userService";
 import validation from "./validation";
+import CardService from "../../services/cardService";
 export default function SignUp() {
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    UserService.getFindTopByOrderByIdDesc().then((result) =>
+      setUser(result.data)
+    );
+  }, []);
+
+  let values = {
+    user: user,
+  };
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -16,6 +29,7 @@ export default function SignUp() {
       //console.log(values);
       UserService.register(values)
         .then(console.log("Sisteme başarı ile eklendi"))
+        .then(createCart(), console.log("cart oluşturuldu"))
         .catch(console.log("sisteme eklenmede hata ile karşılandı"));
     },
     validationSchema: validation,
@@ -112,4 +126,9 @@ export default function SignUp() {
       </div>
     </div>
   );
+
+  function createCart() {
+    let cartService = new CardService();
+    cartService.add(values);
+  }
 }

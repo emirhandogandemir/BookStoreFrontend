@@ -7,6 +7,7 @@ import Card from "../card/Card";
 import BookList from "../../pages/BookList";
 import { useLocation } from "react-router";
 import { useUser } from "../../context/UserContext";
+import Cart from "../cart/Cart";
 export default function HomePage() {
   const location = useLocation();
   const { user, setUser } = useUser();
@@ -34,6 +35,7 @@ export default function HomePage() {
       </div>
       <div className="container cardDiv">
         <BookList></BookList>
+        <Cart></Cart>
       </div>
     </div>
   );

@@ -15,6 +15,16 @@ class UserService {
   countGetAll() {
     return axios.get("http://localhost:8080/api/users/countGetAll");
   }
+
+  getByUsername(username) {
+    return axios.get(
+      "http://localhost:8080/api/users/getByUsername?username=" + username
+    );
+  }
+
+  getFindTopByOrderByIdDesc() {
+    return axios.get("http://localhost:8080/api/users/findTopByOrderByIdDesc");
+  }
 }
 
 export default new UserService();

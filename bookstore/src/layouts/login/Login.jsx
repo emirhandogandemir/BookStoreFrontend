@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./login.scss";
 import { useFormik } from "formik";
 import { useHistory } from "react-router";
@@ -6,8 +6,10 @@ import validation from "./validation";
 import UserService from "../../services/userService";
 import jwt_decode from "jwt-decode";
 import { useUser } from "../../context/UserContext";
+
 export default function Login() {
   const history = useHistory();
+
   const [state, dispatch] = useUser();
   /**
    * TODO: Orhan was here :)

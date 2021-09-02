@@ -19,7 +19,6 @@ export default function DeleteAuthor({ id, onSuccess }) {
       .catch("silinirken bir hata ile karşılaşıldı");
     onSuccess(id);
   };
-  console.log(id);
   return (
     <>
       <button className="btn btn-danger" onClick={handleShow}>

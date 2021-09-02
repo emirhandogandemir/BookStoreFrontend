@@ -11,7 +11,7 @@ export default function BookList() {
   return (
     <div className="row mt-3">
       {books.map((book, index) => (
-        <Card book={book}></Card>
+        <Card book={book} key={index}></Card>
       ))}
     </div>
   );

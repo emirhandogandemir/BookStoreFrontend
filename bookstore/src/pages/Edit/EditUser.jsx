@@ -25,10 +25,11 @@ export default function EditUser() {
                   <th scope="col">Soyadı</th>
                   <th scope="col"></th>
                   <th scope="col"></th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
-                {users.map((user) => (
+                {users.map((user, index) => (
                   <tr>
                     <td>{user.email}</td>
                     <td>{user.username}</td>
@@ -44,6 +45,7 @@ export default function EditUser() {
                         Delete
                       </button>
                     </td>
+                    <td key={index}></td>
                   </tr>
                 ))}
               </tbody>

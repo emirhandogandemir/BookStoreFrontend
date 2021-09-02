@@ -26,10 +26,11 @@ export default function EditCustomer() {
                 <th scope="col">Email</th>
                 <th scope="col"></th>
                 <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody>
-              {customers.map((customer) => (
+              {customers.map((customer, index) => (
                 <tr>
                   <td>{customer.firstName}</td>
                   <td>{customer.lastName}</td>
@@ -47,6 +48,7 @@ export default function EditCustomer() {
                       onSuccess={handleCustomerDeleteSuccess}
                     ></DeleteCustomer>
                   </td>
+                  <td key={index}></td>
                 </tr>
               ))}
               <AddCustomer onSuccess={handleCustomerAddSuccess}></AddCustomer>

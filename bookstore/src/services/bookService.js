@@ -25,4 +25,10 @@ export default class BookService {
   countGetAll() {
     return axios.get("http://localhost:8080/api/books/countGetAll");
   }
+
+  addToCardBook(cardId, bookId) {
+    return axios.post(
+      `http://localhost:8080/api/books/book/${cardId}/${bookId}`
+    );
+  }
 }
