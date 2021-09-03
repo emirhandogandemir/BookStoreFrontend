@@ -4,18 +4,17 @@ import { useFormik } from "formik";
 import UserService from "../../services/userService";
 import validation from "./validation";
 import CardService from "../../services/cardService";
+
 export default function SignUp() {
   const [user, setUser] = useState({});
 
-  useEffect(() => {
-    UserService.getFindTopByOrderByIdDesc().then((result) =>
-      setUser(result.data)
-    );
-  }, []);
-
-  let values = {
+  const newUser = {
     user: user,
   };
+
+  useEffect(() => {
+    console.log(user);
+  }, []);
 
   const formik = useFormik({
     initialValues: {
@@ -25,12 +24,11 @@ export default function SignUp() {
       lastName: "",
       username: "",
     },
+
     onSubmit: (values) => {
-      //console.log(values);
-      UserService.register(values)
-        .then(console.log("Sisteme başarı ile eklendi"))
-        .then(createCart(), console.log("cart oluşturuldu"))
-        .catch(console.log("sisteme eklenmede hata ile karşılandı"));
+      register(values).then((_) =>
+        getFindTopByOrderByIdDesc().then((_) => createCart())
+      );
     },
     validationSchema: validation,
   });
@@ -128,7 +126,16 @@ export default function SignUp() {
   );
 
   function createCart() {
-    let cartService = new CardService();
-    cartService.add(values);
+    new CardService().add(newUser);
+  }
+
+  function register(values) {
+    return UserService.register(values).then("Kayıt Başarılı!");
+  }
+
+  function getFindTopByOrderByIdDesc() {
+    return UserService.getFindTopByOrderByIdDesc().then((result) =>
+      setUser(result.data)
+    );
   }
 }
