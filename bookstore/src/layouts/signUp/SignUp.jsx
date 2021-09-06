@@ -8,13 +8,10 @@ import CardService from "../../services/cardService";
 export default function SignUp() {
   const [user, setUser] = useState({});
 
-  const newUser = {
-    user: user,
-  };
-
   useEffect(() => {
     console.log(user);
-  }, []);
+    Object.keys(user).length > 0 && new CardService().add(user);
+  }, [user]);
 
   const formik = useFormik({
     initialValues: {
@@ -26,9 +23,7 @@ export default function SignUp() {
     },
 
     onSubmit: (values) => {
-      register(values).then((_) =>
-        getFindTopByOrderByIdDesc().then((_) => createCart())
-      );
+      register(values).then((_) => getFindTopByOrderByIdDesc());
     },
     validationSchema: validation,
   });
@@ -125,17 +120,13 @@ export default function SignUp() {
     </div>
   );
 
-  function createCart() {
-    new CardService().add(newUser);
-  }
-
   function register(values) {
     return UserService.register(values).then("Kayıt Başarılı!");
   }
 
   function getFindTopByOrderByIdDesc() {
     return UserService.getFindTopByOrderByIdDesc().then((result) =>
-      setUser(result.data)
+      setUser({ user: { ...result.data } })
     );
   }
 }
