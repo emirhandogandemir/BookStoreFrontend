@@ -87,24 +87,35 @@ export default function Navi(props) {
             <div className="col-sm-4 p-3">
               {cartItems.length >= 0 && <CartSummary />}
             </div>
-            <div className="col-sm-4 p-3 navLink">
-              <NavLink
-                to="/login"
-                activeClassName="navLink"
-                style={{ textDecoration: "none" }}
-              >
-                <p className="text-dark"> Login</p>
-              </NavLink>
-            </div>
-            <div className="col-sm-4 p-3 navLink">
-              <NavLink
-                to="/signUp"
-                activeClassName="navLink"
-                style={{ textDecoration: "none" }}
-              >
-                <p className="text-dark"> Sign Up</p>
-              </NavLink>
-            </div>
+
+            {localStorage.getItem("username").length < 0 ? (
+              <div className="col-sm-4 p-3">
+                <Logout></Logout>
+              </div>
+            ) : (
+              <>
+                {" "}
+                <div className="col-sm-4 p-3 navLink">
+                  {" "}
+                  <NavLink
+                    to="/login"
+                    activeClassName="navLink"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <p className="text-dark"> Login</p>
+                  </NavLink>
+                </div>
+                <div className="col-sm-4 p-3 navLink">
+                  <NavLink
+                    to="/signUp"
+                    activeClassName="navLink"
+                    style={{ textDecoration: "none" }}
+                  >
+                    <p className="text-dark"> Sign Up</p>
+                  </NavLink>
+                </div>{" "}
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -11,7 +11,7 @@ export default function CategoryDetail() {
       .getByCategoryId(categoryId)
       .then((result) => setBooks(result.data.data));
   }, []);
-  console.log(books);
+  //console.log(books);
   return (
     <div className="container">
       <div className="row mt-3">

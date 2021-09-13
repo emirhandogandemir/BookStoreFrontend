@@ -1,25 +1,34 @@
 import React, { useState, useEffect } from "react";
-import { Route, Router, useHistory } from "react-router";
-import Login from "../login/Login";
 import "./homePage.scss";
-import BookService from "../../services/bookService";
-import Card from "../card/Card";
 import BookList from "../../pages/BookList";
 import { useLocation } from "react-router";
 import { useUser } from "../../context/UserContext";
 import Cart from "../cart/Cart";
-export default function HomePage() {
-  const location = useLocation();
-  const { user, setUser } = useUser();
 
-  console.log(user);
+import UserService from "../../services/userService";
+import { act } from "react-dom/test-utils";
+function HomePage() {
+  const location = useLocation();
+
+  const [activeUser, setActiveUser] = useState({});
+
+  useEffect(() => {
+    UserService.getByUsername(localStorageUsername()).then((result) =>
+      setActiveUser(result.data)
+    );
+    //.then(console.log(activeUser.id));
+    //.then(localStorage.setItem("user", Json.stringify(activeUser)));
+  }, []);
+  console.log(activeUser);
+  console.log(localStorageUsername() + ": localStorageUsername");
+
   return (
     <div>
       <div className="container-fluid">
         <div className="row">
           <div className="col-sm-6">
             <div className="header-homepage">
-              The BookWorm Editors -- {user} --
+              The BookWorm Editors -- {activeUser.username}--
               <h3>Featured Books Of the September</h3>
               <button className="btn btn-dark btn-lg">See More</button>
             </div>
@@ -35,8 +44,12 @@ export default function HomePage() {
       </div>
       <div className="container cardDiv">
         <BookList></BookList>
-        <Cart></Cart>
       </div>
     </div>
   );
+
+  function localStorageUsername() {
+    return localStorage.getItem("username");
+  }
 }
+export default React.memo(HomePage);

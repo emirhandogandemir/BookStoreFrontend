@@ -10,13 +10,8 @@ import { useUser } from "../../context/UserContext";
 export default function Login() {
   const history = useHistory();
 
+  // const usernameLocalStorage = localStorage.getItem("username");
   const [state, dispatch] = useUser();
-  /**
-   * TODO: Orhan was here :)
-   *   - Orhan the real fixing
-   *   - Orhan the hot fixing
-   *   - Orhan the alfa fixing
-   */
 
   const formik = useFormik({
     initialValues: {
@@ -37,6 +32,7 @@ export default function Login() {
       });
   };
 
+  // console.log(formik.values);
   function historyAdmin() {
     dispatch({ type: "SET_IS_ADMIN", payload: true });
     localStorage.setItem("isAdmin", true);

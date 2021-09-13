@@ -3,12 +3,12 @@ import UserService from "../../services/userService";
 import { addtoCart } from "../../store/actions/cartAction";
 import { useDispatch } from "react-redux";
 import CardService from "../../services/cardService";
-function Cart({ book }) {
+function Cart({ book, userId }) {
   const dispatch = useDispatch();
 
   const [user, setUser] = useState(null);
   const [card, setCard] = useState(undefined);
-  const usernameLocalStorage = localStorage.getItem("username");
+
   const handleAddToCart = (book) => {
     dispatch(addtoCart(book));
   };
@@ -19,22 +19,8 @@ function Cart({ book }) {
     }
   }
 
-  // kullanıcıyı koydum
-  useEffect(() => {
-    const usernameLocalStorage = localStorage.getItem("username");
-    UserService.getByUsername(usernameLocalStorage).then((result) =>
-      setUser(result.data)
-    );
-  }, []);
+  console.log(userId + " : carda gelen properties");
 
-  //   useEffect(() => {
-  //     cartService
-  //       .getByUserId(user.id)
-  //       .then(setCard((result) => result.data?.data))
-  //       .then(checkCardController());
-  //   }, []);
-  //console.log(user);
-  //console.log(usernameLocalStorage);
   return (
     <>
       <button className="btn btn-primary" onClick={() => handleAddToCart(book)}>

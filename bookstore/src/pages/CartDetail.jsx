@@ -4,7 +4,7 @@ import CardInCart from "../layouts/card/CardToCart/CardInCart";
 import { useSelector } from "react-redux";
 export default function CartDetail() {
   const cartItems = useSelector((state) => state.cart);
-  console.log(cartItems, "redux");
+  //console.log(cartItems, "redux");
   return cartItems.cartItems.length ? (
     <div className="container">
       <div className="row">

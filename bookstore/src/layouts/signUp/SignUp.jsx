@@ -9,7 +9,7 @@ export default function SignUp() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    console.log(user);
+    // console.log(user);
     Object.keys(user).length > 0 && new CardService().add(user);
   }, [user]);
 

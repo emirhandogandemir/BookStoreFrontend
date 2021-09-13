@@ -14,7 +14,9 @@ export default function Logout({ logOut }) {
         <Dropdown.Item>Detail</Dropdown.Item>
         <Dropdown.Item>shopping cart</Dropdown.Item>
         <hr></hr>
-        <Dropdown.Item onClick={logOut}>Logout</Dropdown.Item>
+        <Dropdown.Item onClick={() => localStorage.clear()}>
+          Logout
+        </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
