@@ -5,29 +5,34 @@ import {
   useEffect,
   useReducer,
 } from "react";
-
+import UserService from "../services/userService";
 const initialUserState = {
   isAdmin: false,
-  username: "",
-  user: null,
+  authenticatedUser: null,
   cartId: "",
 };
+const UserContext = createContext({ state: initialUserState });
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(userStateReducer, initialUserState);
 
   const isAdmin = localStorage.getItem("isAdmin");
   const username = localStorage.getItem("username");
-  const user = localStorage.getItem("user");
-  const cartId = localStorage.getItem("cartId");
+
   useEffect(() => {
-    dispatch({ type: "SET_IS_ADMIN", payload: isAdmin === "true" });
-    dispatch({ type: "SET_USERNAME", payload: username });
-    dispatch({ type: "SET_USER", payload: user });
-    dispatch({ type: "SET_CART_ID", payload: cartId });
-  }, []);
+    if (username) {
+      UserService.getByUsername(localStorageUsername()).then((result) => {
+        dispatch({ type: "SET_USER", payload: result.data });
+        dispatch({
+          type: "SET_IS_ADMIN",
+          payload: result.data.roles.some((role) => role.name === "ADMIN"),
+        });
+      });
+    }
+  }, [username]);
   // state i yazdırıyorum burada
-  //console.log(state, "state");
+  console.log(state, "state");
+
   return (
     <UserContext.Provider value={[state, dispatch]}>
       {children}
@@ -41,11 +46,8 @@ function userStateReducer(state = initialUserState, action) {
     case "SET_IS_ADMIN":
       newState = { ...state, isAdmin: action.payload };
       break;
-    case "SET_USERNAME":
-      newState = { ...state, username: action.payload };
-      break;
     case "SET_USER":
-      newState = { ...state, user: action.payload };
+      newState = { ...state, authenticatedUser: action.payload };
       break;
     case "SET_CART_ID":
       newState = { ...state, cartId: action.payload };
@@ -55,7 +57,10 @@ function userStateReducer(state = initialUserState, action) {
   }
   return newState;
 }
+export function useUserContext() {
+  return useContext(UserContext);
+}
 
-const UserContext = createContext({ state: initialUserState });
-
-export const useUser = () => useContext(UserContext);
+function localStorageUsername() {
+  return localStorage.getItem("username");
+}

@@ -1,26 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "./homePage.scss";
 import BookList from "../../pages/BookList";
-import { useLocation } from "react-router";
-import { useUser } from "../../context/UserContext";
-import Cart from "../cart/Cart";
-
-import UserService from "../../services/userService";
-import { act } from "react-dom/test-utils";
+import { useUserContext } from "../../context/UserContext";
+import CardService from "../../services/cardService";
 function HomePage() {
-  const location = useLocation();
+  const [cart, setCart] = useState(null);
 
-  const [activeUser, setActiveUser] = useState({});
+  const [state] = useUserContext();
+  //console.log(state?.authenticatedUser?.id);
 
+  const userId = state?.authenticatedUser?.id;
+
+  console.log(userId);
   useEffect(() => {
-    UserService.getByUsername(localStorageUsername()).then((result) =>
-      setActiveUser(result.data)
-    );
-    //.then(console.log(activeUser.id));
-    //.then(localStorage.setItem("user", Json.stringify(activeUser)));
+    new CardService().getByUserId();
   }, []);
-  console.log(activeUser);
-  console.log(localStorageUsername() + ": localStorageUsername");
 
   return (
     <div>
@@ -28,7 +22,7 @@ function HomePage() {
         <div className="row">
           <div className="col-sm-6">
             <div className="header-homepage">
-              The BookWorm Editors -- {activeUser.username}--
+              The BookWorm Editors --{state?.authenticatedUser?.username}--
               <h3>Featured Books Of the September</h3>
               <button className="btn btn-dark btn-lg">See More</button>
             </div>
@@ -47,9 +41,5 @@ function HomePage() {
       </div>
     </div>
   );
-
-  function localStorageUsername() {
-    return localStorage.getItem("username");
-  }
 }
 export default React.memo(HomePage);

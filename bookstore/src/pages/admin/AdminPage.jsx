@@ -17,14 +17,14 @@ import CustomerService from "../../services/customerService";
 import CategoryService from "../../services/categoryService";
 import { useLocation } from "react-router";
 import Unauthorized from "../../layouts/UnAuthorized/Unauthorized";
-import { useUser } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 export default function AdminPage() {
   const [bookCount, setBookCount] = useState(0);
   const [userCount, setUserCount] = useState(0);
   const [customerCount, setCustomerCount] = useState(0);
   const [categoryCount, setCategoryCount] = useState(0);
 
-  const [state] = useUser();
+  const [state] = useUserContext();
 
   const location = useLocation();
 
@@ -80,7 +80,7 @@ export default function AdminPage() {
       ],
     },
   };
-
+  console.log(state, "admin page");
   return (
     <div>
       {state.isAdmin ? (

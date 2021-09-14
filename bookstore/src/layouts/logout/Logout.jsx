@@ -1,18 +1,21 @@
 import React from "react";
-import { useUser } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 import { Dropdown } from "react-bootstrap";
+import { Link } from "react-router-dom";
 export default function Logout({ logOut }) {
-  const [state] = useUser();
+  const [state] = useUserContext();
 
   return (
     <Dropdown>
       <Dropdown.Toggle variant="success" id="dropdown-basic">
-        {state.username}
+        {state?.authenticatedUser?.username}
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        <Dropdown.Item>Detail</Dropdown.Item>
-        <Dropdown.Item>shopping cart</Dropdown.Item>
+        <Dropdown.Item>
+          <Link to="/userdetail"> Detail </Link>{" "}
+        </Dropdown.Item>
+
         <hr></hr>
         <Dropdown.Item onClick={() => localStorage.clear()}>
           Logout

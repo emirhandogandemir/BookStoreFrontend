@@ -5,13 +5,13 @@ import { useHistory } from "react-router";
 import validation from "./validation";
 import UserService from "../../services/userService";
 import jwt_decode from "jwt-decode";
-import { useUser } from "../../context/UserContext";
+import { useUserContext } from "../../context/UserContext";
 
 export default function Login() {
   const history = useHistory();
 
   // const usernameLocalStorage = localStorage.getItem("username");
-  const [state, dispatch] = useUser();
+  const [state, dispatch] = useUserContext();
 
   const formik = useFormik({
     initialValues: {
@@ -37,12 +37,12 @@ export default function Login() {
     dispatch({ type: "SET_IS_ADMIN", payload: true });
     localStorage.setItem("isAdmin", true);
     localStorage.setItem("username", formik.values.username);
-    dispatch({ type: "SET_USERNAME", payload: formik.values.username });
+    dispatch({ type: "SET_USER", payload: formik.values.username });
     history.push("/admin");
   }
 
   function historyUser() {
-    dispatch({ type: "SET_USERNAME", payload: formik.values.username });
+    dispatch({ type: "SET_USER", payload: formik.values.username });
     localStorage.setItem("isAdmin", false);
     localStorage.setItem("username", formik.values.username);
     dispatch({ type: "SET_IS_ADMIN", payload: false });

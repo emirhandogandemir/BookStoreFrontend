@@ -17,6 +17,7 @@ import EditUser from "../../pages/Edit/EditUser";
 import EditBook from "../../pages/Edit/EditBook";
 import ContactPage from "../../pages/ContactPage";
 import CartDetail from "../../pages/CartDetail";
+import UserDetail from "../../pages/User/UserDetail";
 export default function Dashboard() {
   return (
     <div>
@@ -45,6 +46,7 @@ export default function Dashboard() {
         <Route exact path="/adminedituser" component={EditUser}></Route>
         <Route exact path="/admineditbook" component={EditBook}></Route>
         <Route path="/cartdetail" component={CartDetail}></Route>
+        <Route path="/userdetail" component={UserDetail} />
         <Route path="*" component={Error404}></Route>
       </Switch>
     </div>

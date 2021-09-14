@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Dropdown } from "semantic-ui-react";
 import { Link } from "react-router-dom";
-import { Cart } from "react-bootstrap-icons";
 export default function CartSummary() {
   const { cartItems } = useSelector((state) => state.cart);
 

@@ -1,27 +1,12 @@
 import React, { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { useHistory } from "react-router";
 import "./nav.scss";
 import { useSelector } from "react-redux";
 import CartSummary from "../cartSummary/CartSummary";
-import ThemeContext from "../../context/ThemeContext";
 import Logout from "../logout/Logout";
 export default function Navi(props) {
   //const data = useContext(ThemeContext);
   const { cartItems } = useSelector((state) => state.cart);
-  const history = useHistory();
-  const [isEntered, setIsEntered] = useState(false);
-  //console.log(data);
-
-  function handleLogOut() {
-    setIsEntered(false);
-    history.pushState("/");
-  }
-
-  function handleLogin() {
-    setIsEntered(true);
-  }
 
   return (
     <nav className="container-fluid p-3">
@@ -88,7 +73,7 @@ export default function Navi(props) {
               {cartItems.length >= 0 && <CartSummary />}
             </div>
 
-            {localStorage.getItem("username").length < 0 ? (
+            {localStorage.getItem("username").length > 0 ? (
               <div className="col-sm-4 p-3">
                 <Logout></Logout>
               </div>
