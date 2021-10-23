@@ -1,5 +1,5 @@
 # BookStoreFrontend
-This is frontend of book store project and I will be developing during my software engineer intern
+
 Home page books
 ![image](https://user-images.githubusercontent.com/74687192/133642438-9aef1706-a427-4f18-b2ac-aa4e6d302879.png)
 ![image](https://user-images.githubusercontent.com/74687192/133642473-54a2736b-346c-40d4-8e93-e5fc20a006db.png)
